@@ -1,11 +1,11 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
-import BookData from "../Data.json";
+import Ville from "../json/Ville.json";
 
 function Home(props){
     return(
         <>
-        <SearchBar placeholder="Entrer une région..." data={BookData} />
+        <SearchBar placeholder="Entrer une région..." data={Ville} />
         </>
     );
 }
