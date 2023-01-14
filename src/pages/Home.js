@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import Region from '../json/Region.json';
 import Departement from '../json/Departement.json';
 import Ville from '../json/Ville.json';
+import Mapping from '../components/Mapping'
 
 function Home(props){
     const [places, setPlaces] = useState(Region);
@@ -19,10 +20,12 @@ function Home(props){
             setSelectedRegion(selectedValue.name); 
             setPlaces(Departement.filter(item => item.region_code === selectedValue.code));
             setType("department")
+            setPlaceholder("Entrer un département...")
           } else if (type === 'department') {
             setSelectedDepartment(selectedValue.name);
             setPlaces(Ville.filter(item => item.department_code === selectedValue.code))
             setType("city")
+            setPlaceholder("Entrer une ville...")
           } else if (type === 'city') {
             setSelectedCity(selectedValue.name);
           }
@@ -31,9 +34,12 @@ function Home(props){
     return(
         <>
         <SearchBar placeholder={placeholder} data={places} selectedValue={handleReg}/>
-        <p>Région choisie : {selectedRegion}</p>
-        <p>Département choisie : {selectedDepartment}</p>
-        <p>Ville choisie : {selectedCity}</p>
+        <div className="Choices">
+            <p>Région choisie : {selectedRegion}</p>
+            <p>Département choisie : {selectedDepartment}</p>
+            <p>Ville choisie : {selectedCity}</p>
+        </div>
+        <Mapping from={selectedCity}></Mapping>
         </>
     );
 }
