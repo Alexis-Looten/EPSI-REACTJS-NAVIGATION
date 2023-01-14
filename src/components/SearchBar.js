@@ -27,7 +27,8 @@ function SearchBar(props) {
   };
 
   const handleClick = (value) => {
-    props.reg(value.name);
+    clearInput()
+    props.selectedValue(value);
   }
 
   return (
@@ -53,7 +54,7 @@ function SearchBar(props) {
             return (
               // <>
               //   <button>{value.name}</button>
-                    <button id="ChoiceBtn" className="dataItem"  onClick={handleClick(value)}>{value.name}</button>
+                    <button key={value.id} id="ChoiceBtn" className="dataItem"  onClick={() => handleClick(value)}>{value.name} ({value.code}{value.zip_code})</button>
               // </> 
               // <a className="dataItem" href={value.name} target="_blank" rel="noreferrer">
               //   <p>{value.name}</p>

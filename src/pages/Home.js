@@ -7,38 +7,33 @@ import Ville from '../json/Ville.json';
 function Home(props){
     const [places, setPlaces] = useState(Region);
     const [placeholder, setPlaceholder] = useState("Entrer une région...");
+    const [type, setType] = useState("region");
 
-    let reg = "";
-    const dep = "";
-    const vil = "";
+    const [selectedRegion, setSelectedRegion] = useState('');
+    const [selectedDepartment, setSelectedDepartment] = useState('');
+    const [selectedCity, setSelectedCity] = useState('');
 
-    const handleReg = (data) => {
-        reg = data;
-        console.log("reg : "+reg);
-    }
-
-    const handlePlaces = () => {
-
-        if (reg === "") {
-            setPlaces(Region);
-            return
-        } 
-
-        if (dep === "") {
-            setPlaces(Departement);
-            return
-        }
-
-        if (vil === "") {
-            setPlaces(Ville);
-            return
-        }
-        
+    const handleReg = (selectedValue) => {
+        console.log(selectedValue, type)
+        if (type === 'region') {
+            setSelectedRegion(selectedValue.name); 
+            setPlaces(Departement.filter(item => item.region_code === selectedValue.code));
+            setType("department")
+          } else if (type === 'department') {
+            setSelectedDepartment(selectedValue.name);
+            setPlaces(Ville.filter(item => item.department_code === selectedValue.code))
+            setType("city")
+          } else if (type === 'city') {
+            setSelectedCity(selectedValue.name);
+          }
     }
 
     return(
         <>
-        <SearchBar placeholder={placeholder} data={places} reg={handleReg}/> 
+        <SearchBar placeholder={placeholder} data={places} selectedValue={handleReg}/>
+        <p>Région choisie : {selectedRegion}</p>
+        <p>Département choisie : {selectedDepartment}</p>
+        <p>Ville choisie : {selectedCity}</p>
         </>
     );
 }
