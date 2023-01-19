@@ -4,20 +4,16 @@ import MapComponent from "../components/Mapping";
 
 function Home(props){
     const [StartCity, setStartCity] = useState();
+    const [EndCity, setEndCity] = useState();
 
     const handleStart = (city) => {
-      console.log(city)
       setStartCity(city);
     }
 
-    const [EndCity, setEndCity] = useState();
-    
     const handleEnd = (city) => {
-      console.log(city)
       setEndCity(city);
     }
     
-
     return(
         <>
         {/* Start */}

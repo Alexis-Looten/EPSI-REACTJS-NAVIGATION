@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/SearchBar.css";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import Region from '../json/Region.json';
 import Departement from '../json/Departement.json';
 import Ville from '../json/Ville.json';
@@ -36,6 +37,16 @@ function SearchBar(props) {
     setFilteredData([]);
     setWordEntered("");
   };
+
+  const clearSelected = (event) => {
+    clearInput();
+    setSelectedRegion('');
+    setSelectedDepartment('');
+    setSelectedCity('');
+    setPlaces(Region);
+    setPlaceholder("Entrer une région...");
+    setType("region");
+  }
 
   const handleClick = (value) => {
     clearInput();
@@ -72,6 +83,12 @@ function SearchBar(props) {
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
+        <div className="searchIcon">
+          {(selectedRegion.length !== 0) || (selectedDepartment.length !== 0) || (selectedCity.length !== 0)
+          ? (<CancelPresentationIcon id="clearBtn" onClick={clearSelected} /> ) 
+          : (<></>)
+          }
+      </div>
       </div>
       {filteredData.length !== 0 && (
         <div className="dataResult">
