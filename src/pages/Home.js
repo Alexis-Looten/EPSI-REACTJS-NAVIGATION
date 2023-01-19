@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import MapComponent from "../components/Mapping";
+import Local from "../components/Local"
 
 function Home(props){
     const [StartCity, setStartCity] = useState();
@@ -11,13 +12,23 @@ function Home(props){
     }
 
     const handleEnd = (city) => {
+      
       setEndCity(city);
+    }
+
+    const handleLocal = (geoloc) => { 
+      setStartCity({
+        gps_lat: geoloc.coords.latitude,
+        gps_lng: geoloc.coords.longitude
+        });
+      window.confirm("Position actuelle utilisée comme lieu de départ")
     }
     
     return(
         <>
         {/* Start */}
         <SearchBar selectedCity={handleStart}/>
+        <Local geoloc={handleLocal}/>
 
         {/* End */}
         <SearchBar selectedCity={handleEnd}/>

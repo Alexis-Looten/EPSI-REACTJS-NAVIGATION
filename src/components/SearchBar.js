@@ -88,7 +88,7 @@ function SearchBar(props) {
           ? (<CancelPresentationIcon id="clearBtn" onClick={clearSelected} /> ) 
           : (<></>)
           }
-      </div>
+        </div>
       </div>
       {filteredData.length !== 0 && (
         <div className="dataResult">
@@ -102,9 +102,9 @@ function SearchBar(props) {
     </div>
 
     <div className="Choices">
-      <p>Région choisie : {selectedRegion}</p>
-      <p>Département choisie : {selectedDepartment}</p>
-      <p>Ville choisie : {selectedCity}</p>
+      {selectedRegion && <p>Région choisie : {selectedRegion}</p>}
+      {selectedDepartment && <p>Département choisie : {selectedDepartment}</p>}
+      {selectedCity && <p>Ville choisie : {selectedCity}</p>}
     </div>
     </>
   );
