@@ -1,5 +1,6 @@
 import React from "react";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
+import "../styles/Local.css"
 
 const Local = (props) => {
 
@@ -15,9 +16,10 @@ const Local = (props) => {
   }
 
   return (
-    <div className="searchIcon">
-        <MyLocationIcon id="clearBtn" onClick={getLocation} />
+    <div className="localIcon">
+      <MyLocationIcon onClick={getLocation} />
     </div>
+    
   );
 };
 

@@ -8,19 +8,22 @@ const MapComponent = ({ start, end }) => {
   const [route, setRoute] = useState([]);
 
   useEffect(() => {
-    getRoute(start, end).then((data) => {
-      setRoute(data);
-    });
+    if (start !== '' && end !== ''){
+      getRoute(start, end).then((data) => {
+        setRoute(data);
+      });
+    }
   }, [start, end]);
 
   return (
+    <>
     <div className="mapping">
         <MapContainer center={start} zoom={9}>
         <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <Polyline color="cyan" positions={route} weight={5}/>
+        {route && <Polyline color="cyan" positions={route} weight={5}/>}
         <Marker position={[start[0], start[1]]}>
             <Popup>
                 <p>{start[0]} / {start[1]}</p>
@@ -33,6 +36,7 @@ const MapComponent = ({ start, end }) => {
         </Marker>
         </MapContainer>
     </div>
+  </>
   );
 };
 

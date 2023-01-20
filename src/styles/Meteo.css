@@ -1,0 +1,23 @@
+.meteo{
+    color: snow;
+    display: flex;
+    align-items: top;
+}
+
+.meteoIcon{
+    font-size: 3em;
+    display: flex;
+    align-items: top;
+}
+
+.meteoIcon svg{
+    font-size: 1.5em;
+}
+
+.meteoTemp{
+    font-size: 40px;
+    font-weight: 20px;
+    display: flex;
+    align-items: top;
+}
+

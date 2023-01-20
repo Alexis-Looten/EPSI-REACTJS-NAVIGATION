@@ -3,10 +3,11 @@ import SearchBar from "../components/SearchBar";
 import MapComponent from "../components/Mapping";
 import Local from "../components/Local"
 import MeteoComp from "../components/Meteo";
+import "../styles/Home.css";
 
 function Home(props){
-    const [StartCity, setStartCity] = useState();
-    const [EndCity, setEndCity] = useState();
+    const [StartCity, setStartCity] = useState({gps_lat: '', gps_lng:''});
+    const [EndCity, setEndCity] = useState({gps_lat: '', gps_lng:''});
 
     const handleStart = (city) => {
       setStartCity(city);
@@ -27,32 +28,29 @@ function Home(props){
     
     return(
         <>
-        {/* Start */}
-        <fieldset className="">
-          <legend>
-              Lieu de départ
-          </legend>
-          <SearchBar selectedCity={handleStart}/>
-          <Local geoloc={handleLocal}/>
-          <label>
-            Météo :
+        <div className="Menu">
+          <div className="SearchBar">
+            {/* Start */}
+            <p className="sectionTitle">Lieu de départ</p>
+            <div className="localBar">
+              <SearchBar selectedCity={handleStart}/>
+              <Local geoloc={handleLocal}/>
+            </div>
             {StartCity && <MeteoComp gps_lat={StartCity.gps_lat} gps_lng={ StartCity.gps_lng}/>}
-          </label>
-        </fieldset>
-
-        {/* End */}
-        <fieldset className="">
-          <legend>
-              Lieu de d'arrivée
-          </legend>
-          <SearchBar selectedCity={handleEnd}/>
-          <label>
-            Météo :
+          </div>
+          
+          <div className="SearchBar">
+            {/* End */}
+            <p className="sectionTitle">Lieu d'arrivée</p>
+            <SearchBar selectedCity={handleEnd}/>
             {EndCity && <MeteoComp gps_lat={EndCity.gps_lat} gps_lng={EndCity.gps_lng}/>}
-          </label>
-        </fieldset>
-
-        {StartCity && EndCity && <MapComponent start={[StartCity.gps_lat, StartCity.gps_lng]} end={[EndCity.gps_lat, EndCity.gps_lng]}/>}
+            
+          </div>
+        </div>
+        <div className="Map">
+          {StartCity && EndCity && <MapComponent start={[StartCity.gps_lat, StartCity.gps_lng]} end={[EndCity.gps_lat, EndCity.gps_lng]}/>}
+          {<MapComponent start={[46.010085, 5.42875]} end={[48.86404, 2.331052]}/>}
+        </div>
         </>
     );
 }

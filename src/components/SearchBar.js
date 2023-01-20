@@ -83,28 +83,26 @@ function SearchBar(props) {
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
-        <div className="searchIcon">
-          {(selectedRegion.length !== 0) || (selectedDepartment.length !== 0) || (selectedCity.length !== 0)
-          ? (<CancelPresentationIcon id="clearBtn" onClick={clearSelected} /> ) 
-          : (<></>)
-          }
+        <div className="resetIcon">
+          {((selectedRegion.length !== 0) || (selectedDepartment.length !== 0) || (selectedCity.length !== 0)) && 
+          <CancelPresentationIcon className="clearBtn" onClick={clearSelected} /> }
         </div>
       </div>
       {filteredData.length !== 0 && (
         <div className="dataResult">
           {filteredData.slice(0, 100).map((value, key) => {
             return (
-                    <button key={value.id} id="ChoiceBtn" className="dataItem"  onClick={() => handleClick(value)}>{value.name} ({value.code}{value.zip_code})</button>
+              <button key={value.id} className="dataItem"  onClick={() => handleClick(value)}>{value.name} ({value.code}{value.zip_code})</button>
             );
           })}
         </div>
       )}
     </div>
-
-    <div className="Choices">
-      {selectedRegion && <p>Région choisie : {selectedRegion}</p>}
-      {selectedDepartment && <p>Département choisie : {selectedDepartment}</p>}
-      {selectedCity && <p>Ville choisie : {selectedCity}</p>}
+    
+    <div className="placeChoice">
+      {selectedRegion && <p>{selectedRegion}</p>}
+      {selectedDepartment && <p>{selectedDepartment}</p>}
+      {selectedCity && <p>{selectedCity}</p>}
     </div>
     </>
   );
