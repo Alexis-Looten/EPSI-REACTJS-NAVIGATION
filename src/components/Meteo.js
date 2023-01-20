@@ -40,10 +40,13 @@ const MeteoComp = ({ gps_lat, gps_lng }) => {
 
   return (
     <>
-    <div>
-        {meteoIcon}
+    <div className="iconemeteo">
+        {meteoIcon} 
+        <div className="meteoIcon" >
+            <p>{temperature} °C</p>
+        </div>
     </div>
-    <p>{temperature} °C</p>
+    
     </>
   );
 };
