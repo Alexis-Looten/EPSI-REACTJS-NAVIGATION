@@ -2,7 +2,8 @@
     font-size: 3em;
     color: snow;
     display: flex;
-    align-items: center;
+    margin-top: 2%;
+    /* align-items: center; */
 }
 
 .localIcon svg{

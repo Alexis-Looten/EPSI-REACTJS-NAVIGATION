@@ -68,41 +68,43 @@ function SearchBar(props) {
 
   return (
     <>
-    <div className="search">
-      <div className="searchInputs">
-        <input
-          type="text"
-          placeholder={placeholder}
-          value={wordEntered}
-          onChange={handleFilter}
-        />
-        <div className="searchIcon">
-          {filteredData.length === 0 ? (
-            <SearchIcon />
-          ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
-          )}
+    <div className="barResult">
+      <div className="search">
+        <div className="searchInputs">
+          <input
+            type="text"
+            placeholder={placeholder}
+            value={wordEntered}
+            onChange={handleFilter}
+          />
+          <div className="searchIcon">
+            {filteredData.length === 0 ? (
+              <SearchIcon />
+            ) : (
+              <CloseIcon id="clearBtn" onClick={clearInput} />
+            )}
+          </div>
+          <div className="resetIcon">
+            {((selectedRegion.length !== 0) || (selectedDepartment.length !== 0) || (selectedCity.length !== 0)) && 
+            <CancelPresentationIcon className="clearBtn" onClick={clearSelected} /> }
+          </div>
         </div>
-        <div className="resetIcon">
-          {((selectedRegion.length !== 0) || (selectedDepartment.length !== 0) || (selectedCity.length !== 0)) && 
-          <CancelPresentationIcon className="clearBtn" onClick={clearSelected} /> }
-        </div>
+        {filteredData.length !== 0 && (
+          <div className="dataResult">
+            {filteredData.slice(0, 100).map((value, key) => {
+              return (
+                <button key={value.id} className="dataItem"  onClick={() => handleClick(value)}>{value.name} ({value.code}{value.zip_code})</button>
+              );
+            })}
+          </div>
+        )}
       </div>
-      {filteredData.length !== 0 && (
-        <div className="dataResult">
-          {filteredData.slice(0, 100).map((value, key) => {
-            return (
-              <button key={value.id} className="dataItem"  onClick={() => handleClick(value)}>{value.name} ({value.code}{value.zip_code})</button>
-            );
-          })}
-        </div>
-      )}
-    </div>
     
-    <div className="placeChoice">
-      {selectedRegion && <p>{selectedRegion}</p>}
-      {selectedDepartment && <p>{selectedDepartment}</p>}
-      {selectedCity && <p>{selectedCity}</p>}
+      <div className="placeChoice">
+        {selectedRegion && <p>{selectedRegion}</p>}
+        {selectedDepartment && <p>{selectedDepartment}</p>}
+        {selectedCity && <p>{selectedCity}</p>}
+      </div>
     </div>
     </>
   );
