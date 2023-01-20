@@ -27,33 +27,48 @@ function Home(props){
     
     return(
         <>
-        {/* Start */}
-        <fieldset className="">
-          <legend>
-              Lieu de départ
-          </legend>
-          <SearchBar selectedCity={handleStart}/>
-          <Local geoloc={handleLocal}/>
-          <label>
-            Météo :
-            {StartCity && <MeteoComp gps_lat={StartCity.gps_lat} gps_lng={ StartCity.gps_lng}/>}
-          </label>
-        </fieldset>
-
-        {/* End */}
-        <fieldset className="">
-          <legend>
-              Lieu de d'arrivée
-          </legend>
-          <SearchBar selectedCity={handleEnd}/>
-          <label>
-            Météo :
-            {EndCity && <MeteoComp gps_lat={EndCity.gps_lat} gps_lng={EndCity.gps_lng}/>}
-          </label>
-        </fieldset>
-
-        {StartCity && EndCity && <MapComponent start={[StartCity.gps_lat, StartCity.gps_lng]} end={[EndCity.gps_lat, EndCity.gps_lng]}/>}
-        </>
+          <div class="result">
+            <div className="dep">
+              {/* Start */}
+              <fieldset>
+                <legend>
+                    Lieu de départ
+                </legend>
+                <div >
+                  <SearchBar selectedCity={handleStart}/>
+                  <div className="Meteo-depart">
+                    <Local geoloc={handleLocal}/>
+                    <div className="meteolabel">
+                      <label class="sr-only">
+                        Météo : {StartCity && <MeteoComp gps_lat={StartCity.gps_lat} gps_lng={ StartCity.gps_lng}/>}
+                      </label>
+                    </div>
+                  </div>
+                </div> 
+              </fieldset>
+            </div>
+            <div className="arrive">
+                {/* End */}
+                <fieldset className="fieldarrive">
+                  <legend >
+                      Lieu d'arrivée
+                  </legend>
+                  <SearchBar selectedCity={handleEnd}/> 
+                  <div className="meteo">
+                      <label>
+                        Météo : {EndCity && <MeteoComp gps_lat={EndCity.gps_lat} gps_lng={EndCity.gps_lng}/>}
+                      </label>
+                    </div> 
+                </fieldset>  
+            </div>
+          </div>
+          <div>
+         
+            {StartCity && EndCity && <MapComponent start={[StartCity.gps_lat, StartCity.gps_lng]} end={[EndCity.gps_lat, EndCity.gps_lng]}/>} 
+             
+          </div>
+            
+       </>
     );
 }
 

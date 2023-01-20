@@ -1,5 +1,5 @@
 .searchInputs {
-  margin-top: 20px;
+  margin-top: 0px;
   display: flex;
 }
 
@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  
 }
 
 .search input {
@@ -35,6 +34,7 @@ input:focus {
 }
 .searchIcon svg {
   font-size: 35px;
+
 }
 
 .dataResult {
@@ -82,9 +82,8 @@ label{
   text-align: center;
 }
 .dep {
-  width: 500px;
+  width: 400px;
   height: auto;
-  margin-right: 50px;
   display: flex;
 }
 .arrive{
@@ -125,7 +124,7 @@ label{
 }
 .meteo{
   display: flex;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .result {
@@ -140,3 +139,7 @@ label{
   margin: 5px;
   }
 
+  fieldset.fieldarrive{
+    margin: 10px  2px;
+    padding: 35px 20px 20px;
+  }
