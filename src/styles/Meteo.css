@@ -1,15 +1,16 @@
 .meteo{
     color: snow;
     display: flex;
-    align-items: top;
-    position: relative;
+    align-items: center;
+    position: absolute;
     margin-left: 1%;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .meteoIcon{
-    font-size: 2em;
+    font-size: 1em;
     display: flex;
+    margin-left: 1%;
 }
 
 .meteoIcon svg{
