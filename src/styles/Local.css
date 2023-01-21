@@ -1,0 +1,11 @@
+.localIcon {
+    font-size: 3em;
+    color: snow;
+    display: flex;
+    margin-top: 2%;
+    /* align-items: center; */
+}
+
+.localIcon svg{
+    font-size: 0.9em;
+}

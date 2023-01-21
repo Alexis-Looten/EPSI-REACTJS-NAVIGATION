@@ -5,6 +5,7 @@ import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import EggIcon from '@mui/icons-material/Egg';
 import { getMeteo } from "./GetMeteo";
+import '../styles/Meteo.css'
 
 
 const MeteoComp = ({ gps_lat, gps_lng }) => {
@@ -40,9 +41,11 @@ const MeteoComp = ({ gps_lat, gps_lng }) => {
 
   return (
     <>
-    <div className="iconemeteo">
-        {meteoIcon} 
-        <div className="meteoIcon" >
+    <div className="meteo">
+        <div className="meteoIcon">
+        {meteoIcon}
+        </div>
+        <div className="meteoTemp">
             <p>{temperature} °C</p>
         </div>
     </div>

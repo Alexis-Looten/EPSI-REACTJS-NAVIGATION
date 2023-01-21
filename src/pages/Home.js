@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import MapComponent from "../components/Mapping";
+import SimpleMap from "../components/SimpleMap"
 import Local from "../components/Local"
 import MeteoComp from "../components/Meteo";
+import "../styles/Home.css";
 
 function Home(props){
     const [StartCity, setStartCity] = useState();
@@ -27,48 +29,36 @@ function Home(props){
     
     return(
         <>
-          <div class="result">
-            <div className="dep">
-              {/* Start */}
-              <fieldset>
-                <legend>
-                    Lieu de départ
-                </legend>
-                <div >
-                  <SearchBar selectedCity={handleStart}/>
-                  <div className="Meteo-depart">
-                    <Local geoloc={handleLocal}/>
-                    <div className="meteolabel">
-                      <label class="sr-only">
-                        Météo : {StartCity && <MeteoComp gps_lat={StartCity.gps_lat} gps_lng={ StartCity.gps_lng}/>}
-                      </label>
-                    </div>
-                  </div>
-                </div> 
-              </fieldset>
-            </div>
-            <div className="arrive">
-                {/* End */}
-                <fieldset className="fieldarrive">
-                  <legend >
-                      Lieu d'arrivée
-                  </legend>
-                  <SearchBar selectedCity={handleEnd}/> 
-                  <div className="meteo">
-                      <label>
-                        Météo : {EndCity && <MeteoComp gps_lat={EndCity.gps_lat} gps_lng={EndCity.gps_lng}/>}
-                      </label>
-                    </div> 
-                </fieldset>  
+        <div className="Menu">
+          <div className="Title">
+            <h1>React JS - Navigation</h1>
+          </div>
+          {/* Start */}
+              {StartCity && <MeteoComp classname="meteoHome" gps_lat={StartCity.gps_lat} gps_lng={ StartCity.gps_lng}/>}
+          <div className="SearchBar">
+            <p className="sectionTitle">Lieu de départ</p>
+            <div className="localBar">
+              <SearchBar selectedCity={handleStart}/>
+              <Local geoloc={handleLocal}/>
             </div>
           </div>
-          <div>
-         
-            {StartCity && EndCity && <MapComponent start={[StartCity.gps_lat, StartCity.gps_lng]} end={[EndCity.gps_lat, EndCity.gps_lng]}/>} 
-             
+
+          {/* End */}   
+          {EndCity && <MeteoComp gps_lat={EndCity.gps_lat} gps_lng={EndCity.gps_lng}/>}
+          <div className="SearchBar">
+            <p className="sectionTitle">Lieu d'arrivée</p>
+            <div className="localBar">
+              <SearchBar selectedCity={handleEnd}/>
+            </div>
           </div>
-            
-       </>
+        </div>
+
+        <div className="Map">
+          {StartCity && EndCity ? <MapComponent start={[StartCity.gps_lat, StartCity.gps_lng]} end={[EndCity.gps_lat, EndCity.gps_lng]}/> : <SimpleMap/>}
+          {/* {<MapComponent start={[46.010085, 5.42875]} end={[48.86404, 2.331052]}/>} */}
+        </div>
+
+        </>
     );
 }
 
