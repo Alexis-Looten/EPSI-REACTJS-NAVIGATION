@@ -1,9 +1,9 @@
 # Install 
-## icons : 
+## Icons : 
 - npm install @mui/material @emotion/react @emotion/styled
 - npm install @mui/icons-material
 
-## map : 
+## Map : 
 - npm install react react-dom leaflet
 - npm install react-leaflet
 - npm install --save leaflet-routing-machine

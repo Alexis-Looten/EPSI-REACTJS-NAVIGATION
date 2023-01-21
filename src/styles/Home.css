@@ -1,0 +1,28 @@
+.Menu {
+    width: 29.9%;
+    height: 100%;
+    float: left;
+    border-right: 2px solid #000;
+    box-shadow: 2px 2px 5px rgb(93, 93, 93);
+}
+  
+.SearchBar {
+    margin-top: 2%;
+    margin: 10%;
+    margin-left: 20%;
+}
+
+.localBar{
+    display: flex;
+}
+
+.sectionTitle {
+    margin-left: 3%;
+    margin-bottom: 1%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.Title{
+    text-align: center;
+}
